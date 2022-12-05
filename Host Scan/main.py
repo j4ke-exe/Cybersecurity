@@ -1,4 +1,5 @@
 import ipaddress
+import socket
 
 # Define the network to scan
 network = ipaddress.ip_network('192.0.2.0/24')
