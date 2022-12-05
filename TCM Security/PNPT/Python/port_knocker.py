@@ -53,7 +53,7 @@ def scan_port(host, port):
 # Check if a subnet was entered
 if "/24" in host:
     # Scan the subnet
-    for i in range(1, 255):
+    for i in range(1, 254):
         ip_address = host.replace("/24", "." + str(i))
         threads = []
         # Use numpy and vectorization to create a list of port numbers to scan
