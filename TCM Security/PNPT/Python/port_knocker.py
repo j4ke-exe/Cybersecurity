@@ -1,8 +1,8 @@
 # Import required libraries
+import sys
 import socket
 import threading
 import numpy as np
-import sys
 from datetime import datetime as dt
 
 # Define the banner
@@ -39,9 +39,15 @@ def scan_port(host, port):
     if result == 0:
         try:
             service = socket.getservbyport(port)
-            print(f"Port {port} is open on host {host} ({service}).")
+            print(f"Port {port} is open on {host} ({service})")
+            with open("port_knocker_output.txt", "a") as f:
+                f.write(f"Port {port} is open on {host} ({service})" + "\n")
+                f.close()
         except OSError:
-            print(f"Port {port} is open on host {host}.")
+            print(f"Port {port} is open on {host} (unknown)")
+            with open("port_knocker_output.txt", "a") as f:
+                f.write(f"Port {port} is open on {host} (unknown)" + "\n")
+                f.close()
     sock.close()
 
 # Check if a subnet was entered
