@@ -1,9 +1,13 @@
 import discord
 import argparse
 import socket
+from flask import Flask, render_template, request
 
 # Create a Discord client
 client = discord.Client()
+
+# Create a Flask app
+app = Flask(__name__)
 
 # Define a function to run a port scan
 def port_scan(hostname, port_range, timeout):
@@ -68,8 +72,19 @@ async def on_message(message):
             # If the hostname and port range were not provided, send an error message
             await message.channel.send("Please provide a hostname and port range")
 
-# Prompt the user for the Discord bot token
-token = input("Enter the Discord bot token: ")
+# Define a route for the web control panel
+@app.route("/", methods=["GET", "POST"])
+def index():
+    # If the form is submitted
+    if request.method == "POST":
+        # Get the command from the form
+        command = request.form["command"]
 
-# Start the Discord client
-client.run(token)
+        # Send the command to the Discord bot
+        client.loop.create_task(client.send_message(client.get_channel(<CHANNEL_ID>), command))
+
+        # Redirect to the control panel page
+        return redirect(url_for("index"))
+
+    # If the form is not submitted, render the control panel page
+    return
