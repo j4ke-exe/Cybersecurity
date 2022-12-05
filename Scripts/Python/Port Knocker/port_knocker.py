@@ -22,14 +22,18 @@ banner = """
 # Print the banner
 print(banner)
 
+# Format function
+def el():
+    return print("-" * 120)
+
 # Get the host and port range from the user
 try:
+    el()
     host = input(("Enter the host to knock: "))
     start_port, end_port = input("Enter the port range to knock (e.g. 1-65535): ").split("-")
     start_port = int(start_port)
     end_port = int(end_port)
-    print("\n" + "-" * 120)
-    print(f"Port Knocker is scanning {host}." + "\n" + "Date/Time of Scan: " + str(dt.now().replace(microsecond=0)) + "." + "\n" + "-" * 120)
+    print(el(), f"Port Knocker is scanning {host}." + "\n" + "Date/Time of Scan: " + str(dt.now().replace(microsecond=0)) + "."), el()
 except (ValueError, KeyboardInterrupt):
     print("\nError. Exiting program.\n")
     sys.exit()
@@ -80,5 +84,5 @@ else:
         thread.join()
 
 # Print a completion message
-print("-" * 120 + "\n")
-print(f"DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt.\n")
+print(el(), f"DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt."), el()
+print("\n")
