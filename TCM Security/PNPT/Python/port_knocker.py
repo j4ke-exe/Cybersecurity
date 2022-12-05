@@ -3,6 +3,7 @@ import socket
 import threading
 import numpy as np
 import sys
+from datetime import datetime as dt
 
 # Define the banner
 banner = """
@@ -22,10 +23,10 @@ print(banner)
 
 # Get the host and port range from the user
 try:
-    host = input("Enter the host to knock: ")
+    host = input(("Enter the host to knock: "))
     start_port, end_port = 1, 65535
-    print("-" * 120)
-    print(f"\nPort Knocker is scanning {host}...\n")
+    print("\n" + "-" * 120)
+    print(f"Port Knocker is scanning {host}." + "\n" + "Date/Time of Scan: " + str(dt.now().replace(microsecond=0)) + "." + "\n" + "-" * 120)
 except (ValueError, KeyboardInterrupt):
     print("\nError. Exiting program.\n")
     sys.exit()
