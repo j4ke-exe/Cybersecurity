@@ -1,4 +1,5 @@
 # Import required libraries
+import os
 import sys
 import socket
 import threading
@@ -79,4 +80,5 @@ else:
         thread.join()
 
 # Print a completion message
-print("\nPort scan complete.\n")
+print("-" * 120 + "\n")
+print(f"DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt.\n")
