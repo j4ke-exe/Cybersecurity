@@ -23,7 +23,7 @@ print(banner)
 # Get the host and port range from the user
 try:
     host = input("Enter the host to knock: ")
-    start_port, end_port = 1, 10000
+    start_port, end_port = 1, 65535
     print("-" * 120)
     print(f"\nPort Knocker is scanning {host}...\n")
 except (ValueError, KeyboardInterrupt):
@@ -49,7 +49,9 @@ if "/24" in host:
     for i in range(1, 255):
         ip_address = host.replace("/24", "." + str(i))
         threads = []
-        for port in range(start_port, end_port+1):
+        # Use numpy and vectorization to create a list of port numbers to scan
+        ports = np.arange(start_port, end_port+1)
+        for port in ports:
             thread = threading.Thread(target=scan_port, args=(ip_address, port))
             thread.start()
             threads.append(thread)
@@ -58,7 +60,9 @@ if "/24" in host:
 else:
     # Scan the specified host
     threads = []
-    for port in range(start_port, end_port+1):
+    # Use numpy and vectorization to create a list of port numbers to scan
+    ports = np.arange(start_port, end_port+1)
+    for port in ports:
         thread = threading.Thread(target=scan_port, args=(host, port))
         thread.start()
         threads.append(thread)
