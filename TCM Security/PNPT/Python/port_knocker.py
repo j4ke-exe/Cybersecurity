@@ -24,7 +24,9 @@ print(banner)
 # Get the host and port range from the user
 try:
     host = input(("Enter the host to knock: "))
-    start_port, end_port = 1, 65535
+    start_port, end_port = input("Enter the port range to knock (e.g. 1-65535): ").split("-")
+    start_port = int(start_port)
+    end_port = int(end_port)
     print("\n" + "-" * 120)
     print(f"Port Knocker is scanning {host}." + "\n" + "Date/Time of Scan: " + str(dt.now().replace(microsecond=0)) + "." + "\n" + "-" * 120)
 except (ValueError, KeyboardInterrupt):
