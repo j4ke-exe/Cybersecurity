@@ -23,8 +23,8 @@ banner = """
   \/_/     \/_____/   \/_/ /_/     \/_/      \/_/\/_/   \/_/ \/_/   \/_____/   \/_____/   \/_/\/_/   \/_____/   \/_/ /_/ 
 
 
-                                                   Coded by: wayahlife
-                                               https://github.com/wayahlife
+                                                    Coded by: wayahlife
+                                                https://github.com/wayahlife
 """
 
 # Print the banner
