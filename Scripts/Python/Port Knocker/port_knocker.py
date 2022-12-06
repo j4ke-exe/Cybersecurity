@@ -28,11 +28,10 @@ def el():
 
 # Get the host and port range from the user
 try:
-    el(); host = input(("Enter the host to knock: "))
-    start_port, end_port = input("Enter the port range to knock (e.g. 1-65535): ").split("-")
-    start_port = int(start_port)
-    end_port = int(end_port)
-    print(el(), f"Port Knocker is scanning {host}." + "\n" + "Date/Time of Scan: " + str(dt.now().replace(microsecond=0)) + "."), el()
+    el()
+    host = input(("Enter the host to knock (Type <IP>.0/24 to scan a subnet): "))
+    start_port, end_port = map(int, input("Enter the port range to knock (e.g. 1-65535): ").split("-"))
+    print(el(), f"Port Knocker is scanning {host}." + "Date/Time of Scan: " + str(dt.now().replace(microsecond=0)) + "."), el()
 except (ValueError, KeyboardInterrupt):
     print("\nError. Exiting program.\n")
     sys.exit()
@@ -57,10 +56,10 @@ def scan_port(host, port):
     sock.close()
 
 # Check if a subnet was entered
-if "/24" in host:
+if ".0/24" in host:
     # Scan the subnet
     for i in range(1, 254):
-        ip_address = host.replace("/24", "." + str(i))
+        ip_address = host.replace(".0/24", "." + str(i))
         threads = []
         # Use numpy and vectorization to create a list of port numbers to scan
         ports = np.arange(start_port, end_port+1)
