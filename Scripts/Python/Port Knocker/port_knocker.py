@@ -6,6 +6,10 @@ import threading
 import numpy as np
 from datetime import datetime as dt
 
+# Define __main__
+if __name__ == "__main__":
+    pass
+
 # Resize the terminal window
 if os.name == "nt":
     # Windows
