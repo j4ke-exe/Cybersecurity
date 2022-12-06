@@ -6,6 +6,14 @@ import threading
 import numpy as np
 from datetime import datetime as dt
 
+# Resize the terminal window
+if os.name == "nt":
+    # Windows
+    os.system("mode con: cols=121 lines=50")
+else:
+    # Linux or macOS
+    os.system("resize -s 50 121")
+
 # Define the banner
 banner = """
  ______   ______     ______     ______      __  __     __   __     ______     ______     __  __     ______     ______    
