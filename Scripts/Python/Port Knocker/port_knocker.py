@@ -124,6 +124,7 @@ end_time = dt.now().replace(microsecond=0) - start_time
 output = os.getcwd() + "\port_knocker_output.txt"
 print(f"[+] DONE. Port Knocker has finished scanning {host}. Scan took {end_time} to complete.")
 print(f"[+] Results were outputted to {output}.")
+
 # Scan again
 el(); print("Scan again? (y/n)")
 scan_again = input("Enter an option: ")
