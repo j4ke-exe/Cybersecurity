@@ -28,10 +28,10 @@ def el():
 
 # Get the host and port range from the user
 try:
-    el()
-    host = input(("Enter the host to knock (Type <IP>.0/24 to scan a subnet): "))
+    el(); host = input(("Enter the host to knock (Type <IP>.0/24 to scan a subnet): "))
     start_port, end_port = map(int, input("Enter the port range to knock (e.g. 1-65535): ").split("-"))
-    print(el(), f"Port Knocker is scanning {host}." + "Date/Time of Scan: " + str(dt.now().replace(microsecond=0)) + "."), el()
+    start_time = dt.now().replace(microsecond=0)
+    el(); print(f"Port Knocker is scanning {host}. " + "Date/Time of Scan: " + str(start_time) + "."); el()
 except (ValueError, KeyboardInterrupt):
     print("\nError. Exiting program.\n")
     sys.exit()
@@ -82,4 +82,6 @@ else:
         thread.join()
 
 # Print a completion message
+end_time = dt.now().replace(microsecond=0) - start_time
+el(); print(f"Port Knocker has finished scanning {host}. Scan took {end_time} to complete.")
 el(); print(f"[+] DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt."); el(); print("\n")
