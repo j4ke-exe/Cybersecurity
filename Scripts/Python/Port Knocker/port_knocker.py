@@ -28,8 +28,7 @@ def el():
 
 # Get the host and port range from the user
 try:
-    el()
-    host = input(("Enter the host to knock: "))
+    el(); host = input(("Enter the host to knock: "))
     start_port, end_port = input("Enter the port range to knock (e.g. 1-65535): ").split("-")
     start_port = int(start_port)
     end_port = int(end_port)
@@ -84,6 +83,4 @@ else:
         thread.join()
 
 # Print a completion message
-el()
-print(f"DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt."), el()
-print("\n")
+el(); print(f"DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt."); el(); print("\n")
