@@ -43,8 +43,11 @@ print("3. Exit\n")
 # Get the user's option
 try:
     option = int(input("Enter an option: "))
-except ValueError:
-    print("\nError. Exiting program.\n")
+except (ValueError):
+    print("\nInvalid Input. Exiting program.\n")
+    sys.exit()
+except KeyboardInterrupt:
+    print("\nKeyboard interrupt detected. Exiting Port Knocker.\n")
     sys.exit()
 
 # Handle the user's option
@@ -55,8 +58,11 @@ if option == 1:
         start_port, end_port = map(int, input("Enter the port range to knock (e.g. 1-65535): ").split("-"))
         start_time = dt.now().replace(microsecond=0)
         el(); print(f"Port Knocker is scanning {host}. " + "Date/Time of Scan: " + str(start_time) + "."); el()
-    except (ValueError, KeyboardInterrupt):
-        print("\nError. Exiting program.\n")
+    except (ValueError):
+        print("\nInvalid Input. Exiting program.\n")
+        sys.exit()
+    except KeyboardInterrupt:
+        print("\nKeyboard interrupt detected. Exiting Port Knocker.\n")
         sys.exit()
 elif option == 2:
     # Scan a subnet
@@ -65,12 +71,15 @@ elif option == 2:
         start_port, end_port = map(int, input("Enter the port range to knock (e.g. 1-65535): ").split("-"))
         start_time = dt.now().replace(microsecond=0)
         el(); print(f"Port Knocker is scanning {host}. " + "Date/Time of Scan: " + str(start_time) + "."); el()
-    except (ValueError, KeyboardInterrupt):
-        print("\nError. Exiting program.\n")
+    except (ValueError):
+        print("\nInvalid Input. Exiting program.\n")
+        sys.exit()
+    except KeyboardInterrupt:
+        print("\nKeyboard interrupt detected. Exiting Port Knocker.\n")
         sys.exit()
 else:
     # Exit the program
-    print("\nExiting program.\n")
+    print("\nExiting Port Knocker. Bye.\n")
     sys.exit()
 
 # Define the port scanning function
