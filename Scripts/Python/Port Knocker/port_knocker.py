@@ -43,7 +43,7 @@ print("3. Exit\n")
 # Get the user's option
 try:
     option = int(input("Enter an option: "))
-except (ValueError):
+except ValueError:
     print("\nInvalid Input. Exiting program.\n")
     sys.exit()
 except KeyboardInterrupt:
@@ -58,7 +58,7 @@ if option == 1:
         start_port, end_port = map(int, input("Enter the port range to knock (e.g. 1-65535): ").split("-"))
         start_time = dt.now().replace(microsecond=0)
         el(); print(f"Port Knocker is scanning {host}. " + "Date/Time of Scan: " + str(start_time) + "."); el()
-    except (ValueError):
+    except ValueError:
         print("\nInvalid Input. Exiting program.\n")
         sys.exit()
     except KeyboardInterrupt:
@@ -71,7 +71,7 @@ elif option == 2:
         start_port, end_port = map(int, input("Enter the port range to knock (e.g. 1-65535): ").split("-"))
         start_time = dt.now().replace(microsecond=0)
         el(); print(f"Port Knocker is scanning {host}. " + "Date/Time of Scan: " + str(start_time) + "."); el()
-    except (ValueError):
+    except ValueError:
         print("\nInvalid Input. Exiting program.\n")
         sys.exit()
     except KeyboardInterrupt:
