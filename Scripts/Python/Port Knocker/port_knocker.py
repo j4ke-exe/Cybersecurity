@@ -131,6 +131,6 @@ scan_again = input("Enter an option: ")
 if scan_again == "y" or scan_again == "Y":
     os.system("python3 port_knocker.py")
 else:
-    print("\nExiting Port Knocker. Bye.\n")
+    print("\nExiting Port Knocker. Bye.")
+    el(); print("\n")
     sys.exit()
-el(); print("\n")
