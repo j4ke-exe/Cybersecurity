@@ -128,7 +128,7 @@ print(f"[+] Results were outputted to {output}.")
 # Scan again
 el(); print("Scan again? (y/n)")
 scan_again = input("Enter an option: ")
-if scan_again == "y":
+if scan_again == "y" or scan_again == "Y":
     os.system("python3 port_knocker.py")
 else:
     print("\nExiting Port Knocker. Bye.\n")
