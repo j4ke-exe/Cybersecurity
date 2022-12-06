@@ -84,5 +84,6 @@ else:
         thread.join()
 
 # Print a completion message
-print(el(), f"DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt."), el()
+el()
+print(f"DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt."), el()
 print("\n")
