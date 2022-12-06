@@ -26,14 +26,43 @@ print(banner)
 def el():
     print("-" * 120)
 
-# Get the host and port range from the user
+# Select an option
+el(); print("Select an option: ")
+print("1. Scan a single host")
+print("2. Scan a subnet")
+print("3. Exit\n")
+
+# Get the user's option
 try:
-    el(); host = input(("Enter the host to knock (Type <IP>.0/24 to scan a subnet): "))
-    start_port, end_port = map(int, input("Enter the port range to knock (e.g. 1-65535): ").split("-"))
-    start_time = dt.now().replace(microsecond=0)
-    el(); print(f"Port Knocker is scanning {host}. " + "Date/Time of Scan: " + str(start_time) + "."); el()
-except (ValueError, KeyboardInterrupt):
+    option = int(input("Enter an option: "))
+except ValueError:
     print("\nError. Exiting program.\n")
+    sys.exit()
+
+# Handle the user's option
+if option == 1:
+    # Scan a single host
+    try:
+        el(); host = input(("Enter the host to knock: "))
+        start_port, end_port = map(int, input("Enter the port range to knock (e.g. 1-65535): ").split("-"))
+        start_time = dt.now().replace(microsecond=0)
+        el(); print(f"Port Knocker is scanning {host}. " + "Date/Time of Scan: " + str(start_time) + "."); el()
+    except (ValueError, KeyboardInterrupt):
+        print("\nError. Exiting program.\n")
+        sys.exit()
+elif option == 2:
+    # Scan a subnet
+    try:
+        el(); host = input(("Enter the subnet to knock (e.g. <IP>.0/24): "))
+        start_port, end_port = map(int, input("Enter the port range to knock (e.g. 1-65535): ").split("-"))
+        start_time = dt.now().replace(microsecond=0)
+        el(); print(f"Port Knocker is scanning {host}. " + "Date/Time of Scan: " + str(start_time) + "."); el()
+    except (ValueError, KeyboardInterrupt):
+        print("\nError. Exiting program.\n")
+        sys.exit()
+else:
+    # Exit the program
+    print("\nExiting program.\n")
     sys.exit()
 
 # Define the port scanning function
@@ -81,7 +110,10 @@ else:
     for thread in threads:
         thread.join()
 
-# Print a completion message
+# Output the results
+el()
 end_time = dt.now().replace(microsecond=0) - start_time
-el(); print(f"Port Knocker has finished scanning {host}. Scan took {end_time} to complete.")
-el(); print(f"[+] DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt."); el(); print("\n")
+output = os.getcwd() + "\port_knocker_output.txt"
+print(f"[+] DONE. Port Knocker has finished scanning {host}. Scan took {end_time} to complete.")
+print(f"[+] Results were outputted to {output}.")
+el(); print("\n")
