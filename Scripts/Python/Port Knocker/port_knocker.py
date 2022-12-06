@@ -24,7 +24,7 @@ print(banner)
 
 # Format function
 def el():
-    return print("-" * 120)
+    print("-" * 120)
 
 # Get the host and port range from the user
 try:
