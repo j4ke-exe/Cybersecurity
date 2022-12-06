@@ -45,14 +45,14 @@ def scan_port(host, port):
     if result == 0:
         try:
             service = socket.getservbyport(port)
-            print(f"Port {port} is open on {host} ({service})")
+            print(f"-> Port {port} is open on {host} ({service})")
             with open("port_knocker_output.txt", "a") as f:
-                f.write(f"Port {port} is open on {host} ({service})" + "\n")
+                f.write(f"-> Port {port} is open on {host} ({service})" + "\n")
                 f.close()
         except OSError:
-            print(f"Port {port} is open on {host} (unknown)")
+            print(f"-> Port {port} is open on {host} (unknown)")
             with open("port_knocker_output.txt", "a") as f:
-                f.write(f"Port {port} is open on {host} (unknown)" + "\n")
+                f.write(f"-> Port {port} is open on {host} (unknown)" + "\n")
                 f.close()
     sock.close()
 
@@ -83,4 +83,4 @@ else:
         thread.join()
 
 # Print a completion message
-el(); print(f"DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt."); el(); print("\n")
+el(); print(f"[+] DONE. *Results were outputted to " + str(os.getcwd()) + "\port_knocker_output.txt."); el(); print("\n")
