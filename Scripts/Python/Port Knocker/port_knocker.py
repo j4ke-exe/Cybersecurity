@@ -1,6 +1,7 @@
 # Import required libraries
 import os
 import sys
+import ctypes
 import socket
 import threading
 import subprocess
@@ -13,12 +14,15 @@ if __name__ == "__main__":
 
 # Resize the terminal window for Mac OS
 if os.name == "posix":
-    subprocess.run(['resize', '-s', '22', '72'])
+    subprocess.run(['resize', '-s', '50', '121'])
 
 # Resize the terminal window for Windows
 if os.name == "nt":
     # Windows
-    os.system("mode con: cols=72 lines=22")
+    os.system("mode con: cols=121 lines=50")
+
+# Rename terminal window
+ctypes.windll.kernel32.SetConsoleTitleW("Port Knocker v1.0.2")
 
 # Define the banner
 banner = """
@@ -28,6 +32,7 @@ banner = """
  \ \_\    \ \_____\  \ \_\ \_\    \ \_\     \ \_\ \_\  \ \_\\"\_ \  \ \_____\  \ \_____\  \ \_\ \_\  \ \_____\  \ \_\ \_\ 
   \/_/     \/_____/   \/_/ /_/     \/_/      \/_/\/_/   \/_/ \/_/   \/_____/   \/_____/   \/_/\/_/   \/_____/   \/_/ /_/ 
 
+                                                                                                                v1.0.2
 
                                                     Coded by: wayahlife
                                                 https://github.com/wayahlife
