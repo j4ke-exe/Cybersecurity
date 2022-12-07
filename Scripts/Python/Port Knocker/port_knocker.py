@@ -3,6 +3,7 @@ import os
 import sys
 import socket
 import threading
+import subprocess
 import numpy as np
 from datetime import datetime as dt
 
@@ -10,13 +11,14 @@ from datetime import datetime as dt
 if __name__ == "__main__":
     pass
 
-# Resize the terminal window
+# Resize the terminal window for Mac OS
+if os.name == "posix":
+    subprocess.run(['resize', '-s', '22', '72'])
+
+# Resize the terminal window for Windows
 if os.name == "nt":
     # Windows
-    os.system("mode con: cols=121 lines=50")
-else:
-    # Linux or macOS
-    os.system("resize -s 50 121")
+    os.system("mode con: cols=72 lines=22")
 
 # Define the banner
 banner = """
