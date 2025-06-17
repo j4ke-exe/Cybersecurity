@@ -1,2 +1,2 @@
 # Cybersecurity
-Cybersecurity course material, offensive and defensive scripts, and more.
+A collection of my scripts. Might add more later on.
